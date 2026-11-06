@@ -1,0 +1,71 @@
+:root {
+  --bg: #14161f; --card: #1e2130; --ink: #eef0f8; --muted: #8b90a7;
+  --accent: #5b8cff; --good: #2ecc71; --bad: #ff5d5d; --warn: #ffb020;
+}
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+body { margin: 0; background: var(--bg); color: var(--ink);
+  font: 16px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+header { display: flex; justify-content: space-between; align-items: center;
+  padding: 12px 16px; background: #0e1018; }
+header h1 { font-size: 1.1rem; margin: 0; }
+#whoami { color: var(--muted); font-size: .9rem; }
+main { max-width: 1100px; margin: 0 auto; padding: 12px; }
+.hidden { display: none !important; }
+.card { background: var(--card); border-radius: 14px; padding: 16px; margin-bottom: 12px; }
+h2 { margin: 0 0 10px; font-size: 1.2rem; } h3 { margin: 0 0 8px; font-size: 1rem; color: var(--muted); }
+.muted { color: var(--muted); } .small { font-size: .8rem; } .center { text-align: center; }
+.error { color: var(--bad); min-height: 1.2em; margin: 8px 0 0; }
+input { width: 100%; padding: 14px; font-size: 1.1rem; border-radius: 10px; border: 2px solid #2b2f45;
+  background: #11131c; color: var(--ink); margin-bottom: 10px; }
+#code-input { text-transform: uppercase; letter-spacing: .4em; text-align: center; font-weight: 700; }
+button { width: 100%; padding: 14px; margin-bottom: 8px; font-size: 1rem; font-weight: 600;
+  border-radius: 10px; border: 0; background: #2b2f45; color: var(--ink); cursor: pointer; }
+button:disabled { opacity: .4; cursor: default; }
+button.primary { background: var(--accent); } button.danger { background: #7a2e3a; }
+.or { text-align: center; color: var(--muted); margin: 10px 0; }
+
+.gamebar { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; color: var(--muted); }
+.code { color: var(--ink); letter-spacing: .15em; font-size: 1.3rem; }
+.badge { background: var(--warn); color: #000; padding: 2px 10px; border-radius: 99px; font-weight: 700; font-size: .85rem; }
+.banner { margin: 12px 0; padding: 12px; border-radius: 10px; background: #2a3358; text-align: center; font-weight: 600; }
+.banner.win { background: #1d5a3a; } .banner.lose { background: #6b2630; }
+.banner button { margin-top: 8px; background: var(--accent); }
+
+#counter { font-variant-numeric: tabular-nums; font-weight: 800; text-align: center;
+  font-size: clamp(4rem, 22vw, 9rem); padding: 18px 0 10px; }
+#counter.over { color: var(--bad); }
+.bigbtn { height: 110px; font-size: 2rem; letter-spacing: .1em; border-radius: 18px; }
+.bigbtn.start { background: var(--good); color: #04210f; }
+.bigbtn.stop { background: var(--bad); color: #2a0000; }
+.lead { margin-top: 18px; padding-top: 12px; border-top: 1px solid #2b2f45; }
+
+nav#tabs { display: flex; gap: 6px; margin-bottom: 12px; }
+nav#tabs button { margin: 0; padding: 10px; background: var(--card); color: var(--muted); }
+nav#tabs button.active { background: var(--accent); color: #fff; }
+
+.list { list-style: none; margin: 0; padding: 0; }
+.list li { display: flex; align-items: center; gap: 10px; padding: 10px 4px; border-bottom: 1px solid #2b2f45; }
+.list .name { flex: 1; } .list .score { font-weight: 800; font-variant-numeric: tabular-nums; }
+.list .diff { color: var(--muted); font-size: .85rem; min-width: 70px; text-align: right; }
+.tag { font-size: .75rem; padding: 2px 8px; border-radius: 99px; background: #2b2f45; }
+.tag.win { background: var(--good); color: #04210f; } .tag.lose { background: var(--bad); color: #2a0000; }
+.tag.lead { background: var(--warn); color: #000; } .tag.run { background: var(--accent); }
+.me { background: rgba(91,140,255,.12); border-radius: 8px; }
+
+table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+th, td { padding: 8px 4px; text-align: right; border-bottom: 1px solid #2b2f45; }
+th:nth-child(2), td:nth-child(2) { text-align: left; } th:first-child, td:first-child { text-align: left; width: 2em; }
+th { color: var(--muted); font-weight: 600; font-size: .85rem; }
+
+/* Mobile: tabbed, one pane at a time */
+body.mobile .pane { display: none; }
+body.mobile .pane.show { display: block; }
+
+/* Desktop: all panes side by side, tabs hidden */
+body.desktop nav#tabs { display: none; }
+body.desktop #view-game { display: grid; grid-template-columns: 1.2fr 1fr; gap: 16px; }
+body.desktop #pane-play { grid-row: span 2; }
+body.desktop .pane { display: block; margin-bottom: 0; }
+body.desktop button { max-width: 420px; }
+body.desktop #view-register, body.desktop #view-lobby { max-width: 460px; margin: 40px auto; }
+@media (max-width: 800px) { body.desktop #view-game { grid-template-columns: 1fr; } }

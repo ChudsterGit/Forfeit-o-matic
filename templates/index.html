@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="theme-color" content="#14161f">
+<title>Forfeit-o-matic</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="{{ layout }}">
+<header>
+  <h1>Forfeit-o-matic</h1>
+  <div id="whoami"></div>
+</header>
+
+<main>
+  <!-- Step 1: name -->
+  <section id="view-register" class="card hidden">
+    <h2>Who are you?</h2>
+    <p class="muted">Pick a name so the others can recognise you.</p>
+    <input id="name-input" maxlength="20" placeholder="Your name" autocomplete="off">
+    <button id="register-btn" class="primary">Let's go</button>
+    <p class="error" id="register-err"></p>
+  </section>
+
+  <!-- Step 2: create / join -->
+  <section id="view-lobby" class="card hidden">
+    <h2>Start or join a game</h2>
+    <button id="create-btn" class="primary">Create new game</button>
+    <div class="or">or enter a code</div>
+    <input id="code-input" maxlength="4" placeholder="CODE" autocomplete="off" autocapitalize="characters">
+    <button id="join-btn">Join game</button>
+    <p class="error" id="lobby-err"></p>
+  </section>
+
+  <!-- Step 3: the game -->
+  <div id="view-game" class="hidden">
+    <nav id="tabs">
+      <button data-tab="play" class="active">Play</button>
+      <button data-tab="scores">Round</button>
+      <button data-tab="hiscores">Hi-scores</button>
+    </nav>
+
+    <section id="pane-play" class="pane card">
+      <div class="gamebar">
+        <span>Game <b id="game-code" class="code"></b></span>
+        <span>Round <b id="round-no"></b></span>
+        <span id="lead-badge" class="badge hidden">👑 You're the lead</span>
+      </div>
+      <div id="banner" class="banner hidden"></div>
+      <div id="counter">1</div>
+      <button id="play-btn" class="bigbtn start">START</button>
+      <p id="play-msg" class="muted center"></p>
+
+      <div id="lead-controls" class="lead hidden">
+        <h3>Lead controls</h3>
+        <button id="finish-btn">End round now</button>
+        <button id="reset-scores-btn">Reset scores (same players)</button>
+        <button id="new-game-btn" class="danger">New game (everyone re-joins)</button>
+      </div>
+    </section>
+
+    <section id="pane-scores" class="pane card">
+      <h2>This round <small id="progress"></small></h2>
+      <ul id="score-list" class="list"></ul>
+    </section>
+
+    <section id="pane-hiscores" class="pane card">
+      <h2>Overall ranking</h2>
+      <table id="hi-table">
+        <thead><tr><th>#</th><th>Player</th><th>W</th><th>L</th><th>Rds</th><th>Best</th><th>Avg</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <p class="muted small">Wins = closest to 1000 in a round; Losses = furthest. Best/Avg = distance from 1000.</p>
+    </section>
+  </div>
+</main>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
